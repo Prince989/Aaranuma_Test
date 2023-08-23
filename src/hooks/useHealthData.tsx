@@ -21,8 +21,10 @@ export default function useHealthData(props: IProps) {
 
     const clientId = `${name}_${last_name}`;
 
+    // Informations that related to the health parameters
     const [healthInfo, setHealthInfo] = useState<IHealthInfo>();
-
+    
+    // Informations that related to the health device
     const [healthDeviceInfo, setHealthDeviceInfo] = useState<IHealthDeviceInfo>();
 
     const [mapLatLong, setMapLatLong] = useState<number[]>([]);
@@ -50,14 +52,14 @@ export default function useHealthData(props: IProps) {
             //Getting the template for health device data structure
             let healthDeviceInfoTemp : IHealthDeviceInfo = { ...healthDeviceComponentsAttributes};
             
-            //Placing the values 
+            //Placing the values and find text colors and images from values with findCorrectImage function
             Object.entries(healthInfoTemp).forEach(([key,value]) => {
                 value.value = healthResponse[key as keyof typeof healthResponse] as string;
                 value.textColor = (healthResponse[value.colorKey as keyof typeof healthResponse] as string).toLowerCase();
                 value.image = value.findCorrectImage(componentImages[key],healthResponse[value.colorKey as keyof typeof healthResponse] as string);
             })
             
-            //Placing the values 
+            //Placing the values and find images from values with findCorrectImage function
             Object.entries(healthDeviceInfoTemp).forEach(([key,value]) => {
                 value.value = healthResponse[key as keyof typeof healthResponse] as string;
                 value.image = value.findCorrectImage(componentImages[key],value.value);

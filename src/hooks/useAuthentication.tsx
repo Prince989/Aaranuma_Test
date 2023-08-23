@@ -17,26 +17,27 @@ export default function useAuthentication() {
 
 
     const [token, setToken] = useState<string>(getToken());
-    const [refreshTokenId, setRefreshTokenId] = useState<string>(getRefreshTokenId)
 
     const saveToken = (token: string, refreshTokenId: string) => {
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("refreshTokenId", refreshTokenId);
-        setRefreshTokenId(refreshTokenId);
         setToken(token);
     }
 
+    // Refresh Token Request
     const refreshToken = () => {
         httpClient.post<ILoginResponse>(APIPaths.REFRESH_TOKEN, {
             refreshTokenId : getRefreshTokenId()
         }).then((res)=> {
             saveToken(res.data.accessToken, res.data.refreshTokenId);
+            // Refresh token every 10 minutes
             setTimeout(() => {
                 refreshToken();
             },590000)
         })
     }
 
+    // Login Request
     const login = (username: string, password: string) => {
         return new Promise((resolve, reject) => {
             httpClient.post<ILoginResponse>(APIPaths.LOGIN, {
@@ -45,6 +46,7 @@ export default function useAuthentication() {
             })
                 .then((res) => {
                     saveToken(res.data.accessToken, res.data.refreshTokenId)
+                    // Refresh token in next 10 minutes
                     setTimeout(() => {
                         refreshToken()
                     }, 590000)
@@ -61,8 +63,6 @@ export default function useAuthentication() {
         {
             token,
             login,
-            refreshTokenId,
-
             setToken: saveToken
         }
     )

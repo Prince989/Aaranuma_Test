@@ -30,10 +30,7 @@ export default function HomePage() {
                     navigate('/login');
             })
     }, [])
-
-    useEffect(() => {
-        console.log(healthInfo,"ghavi");
-    },[healthInfo])
+    
     return (
         <Box sx={{ display: "flex", height: "100vh", width: "100%", justifyContent: "center", alignItems: "center" }}>
             <Box sx={{ width: "83%", maxWidth: "1600px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>

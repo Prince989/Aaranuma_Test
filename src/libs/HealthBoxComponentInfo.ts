@@ -58,7 +58,6 @@ export const healthComponentsAttributes : IHealthInfo = {
     Heartbeat : {
         label : "ضربان قلب",
         findCorrectImage : (images,value) => {
-            console.log(value);
             const image = value == "Red" ? images[0] : (value == "Orange" ? images[1] : images[2])
             return image
         },
@@ -94,8 +93,8 @@ export const healthComponentsAttributes : IHealthInfo = {
                     return images[0]
             }
         },
-        value : "",
         colorKey : "StatusColor",
+        value : "",
         image : ""
     },
     Temperature : {
@@ -104,8 +103,8 @@ export const healthComponentsAttributes : IHealthInfo = {
             const image = value == "Red" ? images[0] : (value == "Orange" ? images[1] : images[2])
             return image
         },
-        value : "",
         colorKey : "TemperatureColor",
+        value : "",
         image : ""
     }
 }
