@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Test With 1920 * 1080 Resolution
+Please Test Project With 1920 * 1080 Resolution
 
 ## Available Scripts
 

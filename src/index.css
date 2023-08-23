@@ -1,8 +1,23 @@
+
+@font-face {
+  font-family: sahel-bold;
+  src: url('/public/fonts/Sahel-Bold.ttf');
+}
+
+@font-face {
+  font-family: sahel-black;
+  src: url('/public/fonts/Sahel-Black.ttf');
+}
+
+@font-face {
+  font-family: sahel-regular;
+  src: url('/public/fonts/Sahel.ttf');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: sahel-regular;
+  background-color: #EAEAEA;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
